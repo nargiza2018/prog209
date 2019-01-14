@@ -1,0 +1,56 @@
+body {
+    font-family: Verdana;
+}
+
+#container {
+    width: 700px;
+}
+
+#top {
+    background-color: #87B37F;
+    padding: 10px;
+}
+
+#top h1 {
+    margin: 0;
+}
+
+#left {
+    float: left;
+    width: 500px;
+    height: 500px;
+    background-image: url("../images/map.jpg");
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#sprite {
+    position: absolute;
+    top: 161px;
+    left: 181px;
+}
+
+#right {
+    float: right;
+    height: 500px;
+    width: 200px;
+    background-color: #FBCDC5;
+    text-align: center;
+}
+
+#right > h1 {
+    font-size: 15px;
+}
+
+#right > p {
+    font-size: 12px;
+}
+
+#footer {
+    background-color: #BCB66B;
+    text-align: center;
+    padding: 14px;
+    clear: both;
+    font-size: 12px;
+    font-weight: bold;
+}
