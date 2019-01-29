@@ -7,4 +7,3 @@ console.log(min(0, 10));
 console.log(min(0, -10));
 
 console.log(min(240, 918));
-

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 5 Web Storage</title>
+
+    <link href="reset.css" type="text/css" rel="stylesheet"/>
+
+    <link href="webStorage_Style.css" type="text/css" rel="stylesheet"/>
+
+    <script>
+        /*
+        Exercise 3
+        Nargiza Yusupova
+
+        Description: localStorage Assignment
+         */
+        window.addEventListener("load", init);
+
+        function init() {
+            if (typeof (Storage) !== "undefined") {
+
+                display();
+
+                var button = document.getElementById("button");
+                button.addEventListener("click", saveInfo);
+            }
+        }
+
+        function saveInfo() {
+            var name = document.getElementById("name").value;
+            var type = document.getElementById("type").value;
+            var quantity = document.getElementById("quantity").value;
+            var items = document.getElementById("items").value;
+
+            localStorage.setItem("donutName", name);
+            localStorage.setItem("donutType", type);
+            localStorage.setItem("donutQuantity", quantity);
+            localStorage.setItem("donutItems", items);
+
+            display();
+
+        }
+
+        function display() {
+            var rightBox = document.getElementById("useroutput");
+            var theName = localStorage.getItem("donutName");
+            var theType = localStorage.getItem("donutType");
+            var theQuantity = localStorage.getItem("donutQuantity");
+            var theItems = localStorage.getItem("donutItems");
+
+            if (theName === null) {
+                rightBox.innerHTML = "";
+            } else {
+                rightBox.innerHTML = "OUTPUT  <hr />"
+                    + "<br /><br />The Name: " + theName
+                    + "<br /><br />The Type: " + theType
+                    + "<br /><br />The Quantity: " + theQuantity
+                    + "<br /><br />The Items: " + theItems
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+<div id="main">
+    <div>
+        <img src="donuts.jpg" alt="donuts">
+    </div>
+    <section id="userinput">
+        INPUT <br>
+        <hr/>
+        <br/><br/>
+        <form>
+
+            <div>Name <br/><input type="text" id="name" size="20"></div>
+            <br/>
+            <div>Type<br/> <input type="text" id="type" size="20"></div>
+            <br/>
+            <div>Quantity<br/> <input type="text" id="quantity" size="10"></div>
+            <br/>
+            <div>Items<br/> <input type="text" id="items" size="20"></div>
+            <br/>
+            <div><input type="button" id="button" value="Save"></div>
+
+        </form>
+    </section>
+
+
+    <section id="useroutput">
+        OUTPUT
+        <hr/>
+        <br/><br/>
+    </section>
+
+</div>
+
+
+</body>
+</html>
