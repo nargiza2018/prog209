@@ -1,0 +1,13 @@
+#main {
+    font-size: 16px;
+    font-family: "Comic Sans MS", sans-serif;
+    width: 750px;
+    margin: 0 auto;
+}
+
+#color {
+    border: 1px solid #aaa;
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+}
