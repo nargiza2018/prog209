@@ -20,16 +20,17 @@ function insert(){
     nonShufflingArray[nonShufflingArray.length] = nonShufflingValue;
 }
 
+document.getElementById('display').innerHTML = content;
+
+
 function show() {
     var content="<b>Display 9 different items</b>;
     for(var i = 0; i < nonShufflingArray.length; i++) {
         content += nonShufflingArray[i] + "<br>";
     }
 
-    document.getElementById('display').innerHTML = content;
-}
 
-messageBox.innerHTML += "nonShuffling:" + firstName.join(", ") + "<br/>";
+messageBox.innerHTML += "nonShuffling:" + nonShufflingArray.join(", ") + "<br/>";
 
 }
 var shuffledArray=[];
