@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tweening Basics</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body {
+            background-color: #ccc;
+        }
+
+        #icon {
+            position: relative;
+        }
+        body{
+            background-color: #0d152a;
+        }
+
+        #space {
+            position: absolute;
+        }
+        h1 {
+            position: absolute;
+            color: #acc7a3;
+        }
+        #spaceTitle {
+            position: relative;
+            width: 920px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+<img id="icon" src="blue-zebra.png" alt="blue zebra icon" width="210" height="210">
+<div id="spaceTitle">
+    <img id="space" src="space.jpg" alt="blue space icon" width="920" height="100">
+    <h1 id="spaceText">Bon Voyage Earth</h1><br>
+    </div>
+<!-- load Content Delivery Network (CDN) scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+
+<!-- add your own script -->
+<script>
+	
+	var icon = document.getElementById("icon");
+    TweenLite.to(icon, 3, {rotation:360, left:300, ease:Bounce.easeIn, delay:2});
+
+    var space = document.getElementById("space");
+    TweenLite.to(space, 2, {rotation: 180, left: 200, ease:Bounce.easeOut, delay:7});
+
+    var text = document.getElementById("spaceText");
+    TweenLite.to(text, 5, {x: 330, ease:Elastic.easeOut, delay:2});
+
+
+</script>
+</body>
+</html>
