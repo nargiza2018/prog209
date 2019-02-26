@@ -1,4 +1,3 @@
-
 /*
 Adventure Game
 Nargiza Yusupova
@@ -6,7 +5,7 @@ Description: Project One
  */
 
 //Setting the locations for the game
-var map= [];
+const map = [];
 
 map[0] = "Cold Basement.";
 map[1] = "Hungry Kitchen.";
@@ -16,10 +15,10 @@ map[4] = "Living Room";
 map[5] = "Front Porch";
 
 //this is the player's starting position
-var mapLocation = 0;
+let mapLocation = 0;
 
 //setting the haunted house images
-var images = [];
+const images = [];
 
 images[0] = "Scary-Dark-Basement.jpg";
 images[1] = "Hungry-kitchen.jpg";
@@ -29,7 +28,7 @@ images[4] = "living-room.jpg";
 images[5] = "front-porch.jpg";
 
 //setting the blocked path messages
-var blockedPathMessages = [];
+const blockedPathMessages = [];
 
 blockedPathMessages[0] = "You will die if you go that way.";
 blockedPathMessages[1] = "Don't look out of the window.";
@@ -39,7 +38,7 @@ blockedPathMessages[4] = "";
 blockedPathMessages[5] = "The door is not opening.";
 
 //setting the blocked path messages
-var helpMessages = [];
+const helpMessages = [];
 
 helpMessages[0] = "";
 helpMessages[1] = "I wonder if you could find a tool to get out of here?";
@@ -50,41 +49,41 @@ helpMessages[5] = "";
 helpMessages[6] = "";
 
 //create the objects the player is carrying and setting their locations
-var items = ["key"];
-var itemLocations = [3];
+const items = ["key"];
+const itemLocations = [3];
 
 //An array to store what the player is carrying
-var knife = [];
+const knife = [];
 
 //Initialize the player's input
-var playersInput = "";
+let playersInput = "";
 
 //Initialize the gameMessage
-var gameMessage = "<br>Welcome to your worst nightmare!";
+let gameMessage = "<br>Welcome to your worst nightmare!";
 gameMessage += "Try any of these words: ";
 gameMessage += "north, east, south, west, take, turn, ";
 gameMessage += "use, take, open, key, help.";
 
 //Create an array of actions the game understands which the player would be using
 //and a variable to store the current action
-var actionsIKnow
-    = ["north","east", "south", "west",
+const actionsIKnow
+    = ["north", "east", "south", "west",
     "help", "take", "use", "key"];
-var action = "";
+let action = "";
 //An array of items the game understands
 //and a variable to store the current item
-var itemsIKnow = ["key", "knife"];
-var item = "";
+const itemsIKnow = ["key", "knife"];
+let item = "";
 
 //The img element
-var image = document.querySelector("img");
+const image = document.querySelector("img");
 
 //The input and output fields
-var output = document.querySelector("#output");
-var input = document.querySelector("#input");
+const output = document.querySelector("#output");
+const input = document.querySelector("#input");
 
 //The buttons used on the mouse
-var button = document.getElementById("enter");
+const button = document.getElementById("enter");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 button.addEventListener("mousedown", mousedownHandler, false);
@@ -96,8 +95,7 @@ window.addEventListener("keydown", keydownHandler, false);
 //This calls and displays the current location of the player
 render();
 
-function mousedownHandler()
-{
+function mousedownHandler() {
     button.style.background
         = "-webkit-linear-gradient(top, rgba(0,0,0,0.2), rgba(255,255,255,0.3))";
     button.style.background
@@ -106,8 +104,7 @@ function mousedownHandler()
         = "linear-gradient(top, rgba(0,0,0,0.2), rgba(255,255,255,0.3))";
 }
 
-function mouseoutHandler()
-{
+function mouseoutHandler() {
     button.style.background
         = "-webkit-linear-gradient(top, rgba(255,255,255,0.6), rgba(0,0,0,0.2))";
     button.style.background
@@ -116,8 +113,7 @@ function mouseoutHandler()
         = "linear-gradient(top, rgba(255,255,255,0.6), rgba(0,0,0,0.2))";
 }
 
-function clickHandler()
-{
+function clickHandler() {
     button.style.background
         = "-webkit-linear-gradient(top, rgba(255,255,255,0.6), rgba(0,0,0,0.2))";
     button.style.background
@@ -128,17 +124,13 @@ function clickHandler()
     playGame();
 }
 
-function keydownHandler(event)
-{
-
-    if(event.keyCode === 13)
-    {
+function keydownHandler(event) {
+    if (event.keyCode === 13) {
         playGame();
     }
 }
 
-function playGame()
-{
+function playGame() {
     //Get the player's input and convert it to lowercase
     playersInput = input.value;
     playersInput = playersInput.toLowerCase();
@@ -148,10 +140,8 @@ function playGame()
     action = "";
 
     //Figure out the player's action
-    for(i = 0; i < actionsIKnow.length; i++)
-    {
-        if(playersInput.indexOf(actionsIKnow[i]) !== -1)
-        {
+    for (let i = 0; i < actionsIKnow.length; i++) {
+        if (playersInput.indexOf(actionsIKnow[i]) !== -1) {
             action = actionsIKnow[i];
             console.log("player's action: " + action);
             break;
@@ -159,66 +149,50 @@ function playGame()
     }
 
     //Figure out the item the player wants
-    for(i = 0; i < itemsIKnow.length; i++)
-    {
-        if(playersInput.indexOf(itemsIKnow[i]) !== -1)
-        {
+    for (let i = 0; i < itemsIKnow.length; i++) {
+        if (playersInput.indexOf(itemsIKnow[i]) !== -1) {
             item = itemsIKnow[i];
             console.log("player's item: " + item);
         }
     }
 
     //Choose the correct action to get of the Haunted House alive
-    switch(action)
-    {
+    switch (action) {
         case "north":
-            if(mapLocation >= 3)
-            {
+            if (mapLocation >= 3) {
                 mapLocation -= 3;
-            }
-            else
-            {
+            } else {
                 gameMessage = blockedPathMessages[mapLocation];
             }
             break;
 
         case "east":
-            if(mapLocation % 3 !== 2)
-            {
+            if (mapLocation % 3 !== 2) {
                 mapLocation += 1;
-            }
-            else
-            {
+            } else {
                 gameMessage = blockedPathMessages[mapLocation];
             }
             break;
 
         case "south":
-            if(mapLocation < 3)
-            {
+            if (mapLocation < 3) {
                 mapLocation += 3;
-            }
-            else
-            {
+            } else {
                 gameMessage = blockedPathMessages[mapLocation];
             }
             break;
 
         case "west":
-            if(mapLocation % 3 !== 0)
-            {
+            if (mapLocation % 3 !== 0) {
                 mapLocation -= 1;
-            }
-            else
-            {
+            } else {
                 gameMessage = blockedPathMessages[mapLocation];
             }
             break;
 
         case "help":
             //Display a hint if there is one for this location
-            if(helpMessages[mapLocation] !== "")
-            {
+            if (helpMessages[mapLocation] !== "") {
                 gameMessage = helpMessages[mapLocation] + " ";
             }
             gameMessage += "Try any of these words: ";
@@ -227,7 +201,7 @@ function playGame()
             break;
 
         case "take":
-            takeItem()
+            takeItem();
             break;
 
         case "drop":
@@ -246,16 +220,14 @@ function playGame()
     render();
 }
 
-function takeItem()
-{
+function takeItem() {
     //Find the index number of the item in the items array
-    var itemIndexNumber = items.indexOf(item);
+    const itemIndexNumber = items.indexOf(item);
 
     //Does the item exist in the game world
     //and is it at the player's current location?
-    if(itemIndexNumber !== -1
-        && itemLocations[itemIndexNumber] === mapLocation)
-    {
+    if (itemIndexNumber !== -1
+        && itemLocations[itemIndexNumber] === mapLocation) {
         gameMessage = "You take the " + item + ".";
 
         //Add the item to the player's backpack
@@ -268,26 +240,21 @@ function takeItem()
         //Display in the console for testing
         console.log("Personal: " + items);
         console.log("pocket items: " + knife);
-    }
-    else
-    {
+    } else {
         //Message if you try and take an item
         //that isn't in the current location
         gameMessage = "You can't do that.";
     }
 }
 
-function dropItem()
-{
+function dropItem() {
     //Try to drop the item only if the backpack isn't empty
-    if(knife.length !== 0)
-    {
+    if (knife.length !== 0) {
         //Find the item's array index number in the backpack
-        var knifeIndexNumber = knife.indexOf(item);
+        const knifeIndexNumber = knife.indexOf(item);
 
         //The item is in the backpack if backpackIndex number isn't -1
-        if(knifeIndexNumber !== -1)
-        {
+        if (knifeIndexNumber !== -1) {
 
             //Tell the player that the item has been dropped
             gameMessage = "You drop the " + item + ".";
@@ -298,53 +265,43 @@ function dropItem()
 
             //Remove the item from the player's backpack
             knife.splice(knifeIndexNumber, 1);
-        }
-        else
-        {
+        } else {
             //Message if the player tries to drop
             //something that's not in the backpack
             gameMessage = "You can't do that.";
         }
-    }
-    else
-    {
+    } else {
         //Message if the backpack is empty
         gameMessage = "You're not carrying anything.";
     }
 }
 
-function useItem()
-{
+function useItem() {
     //1. Find out if the item is in the backpack
 
     //Find the item's array index number in the backpack
-    var knifeIndexNumber = knife.indexOf(item);
+    const knifeIndexNumber = knife.indexOf(item);
 
     //If the index number is -1, then it isn't in the backpack.
     //Tell the player that he or she isn't carrying it.
-    if(knifeIndexNumber === -1)
-    {
+    if (knifeIndexNumber === -1) {
         gameMessage = "You're not carrying it.";
     }
 
     //If there are no items in the backpack, then
     //tell the player the backpack is empty
-    if(knife.length === 0)
-    {
+    if (knife.length === 0) {
         gameMessage += "The ghost took your knife";
     }
 
     //2. If the item is found in the backpack
     //figure out what to do with it
-    if(knifeIndexNumber !== -1)
-    {
-        switch(item)
-        {
+    if (knifeIndexNumber !== -1) {
+        switch (item) {
             case "kitchenKnife":
-                if(mapLocation === 5)
-                {
+                if (mapLocation === 5) {
                     gameMessage = "Beautiful music fills the air.";
-                    gameMessage += "Kind ghost shows you the way"
+                    gameMessage += "Kind ghost shows you the way";
                     gameMessage += "and you are outside on the porch!";
 
                     //Add the sword to the world
@@ -353,17 +310,14 @@ function useItem()
 
                     //Reset the location's help message
                     helpMessages[mapLocation] = "";
-                }
-                else
-                {
+                } else {
                     gameMessage = "Try to listen to the whispers.";
                     gameMessage += "but it makes no sound here.";
                 }
                 break;
 
             case "key":
-                if(mapLocation === 5)
-                {
+                if (mapLocation === 5) {
                     gameMessage
                         = "You use the key to open the door! ";
                     gameMessage
@@ -371,17 +325,14 @@ function useItem()
 
                     //Reset the location's help message
                     helpMessages[mapLocation] = "";
-                }
-                else
-                {
+                } else {
                     gameMessage
                         = "You dropped they key";
                 }
                 break;
 
             case "knife":
-                if(mapLocation ===  1)
-                {
+                if (mapLocation === 1) {
                     gameMessage = "You drop the stone in the well.";
                     gameMessage += " A magical flute appears!";
 
@@ -394,9 +345,7 @@ function useItem()
 
                     //Reset the location's help message
                     helpMessages[mapLocation] = "";
-                }
-                else
-                {
+                } else {
                     gameMessage
                         = "You using knife to protect yourself.";
                 }
@@ -405,18 +354,15 @@ function useItem()
     }
 }
 
-function render()
-{
+function render() {
     //Render the location
     output.innerHTML = map[mapLocation];
     image.src = "./" + images[mapLocation];
     //Display an item if there's one in this location
     //1. Loop through all the game items
-    for(var i = 0; i < items.length; i++)
-    {
+    for (let i = 0; i < items.length; i++) {
         //Find out if there's an item at this location
-        if(mapLocation === itemLocations[i])
-        {
+        if (mapLocation === itemLocations[i]) {
             //Display it
             output.innerHTML
                 += "<br>You see a <strong>"
@@ -426,8 +372,7 @@ function render()
     }
 
     //Display the player's pocket contents
-    if(knife.length !== 0)
-    {
+    if (knife.length !== 0) {
         output.innerHTML += "<br>You are carrying: " + knife.join(", ");
     }
 
@@ -438,8 +383,8 @@ function render()
     input.value = "";
 }
 
-var save = document.getElementById("save");
-var reload = document.getElementById("reload");
+const save = document.getElementById("save");
+const reload = document.getElementById("reload");
 
 function saveGame() {
     //saving the locations
