@@ -1,3 +1,10 @@
+
+/*
+Adventure Game
+Nargiza Yusupova
+Description: Project One
+ */
+
 //Setting the locations for the game
 var map= [];
 
@@ -22,7 +29,6 @@ images[4] = "living-room.jpg";
 images[5] = "front-porch.jpg";
 
 //setting the blocked path messages
-
 var blockedPathMessages = [];
 
 blockedPathMessages[0] = "You will die if you go that way.";
@@ -43,7 +49,7 @@ helpMessages[4] = "";
 helpMessages[5] = "";
 helpMessages[6] = "";
 
-//create the objects and setting their locations
+//create the objects the player is carrying and setting their locations
 var items = ["key"];
 var itemLocations = [3];
 
@@ -59,13 +65,12 @@ gameMessage += "Try any of these words: ";
 gameMessage += "north, east, south, west, take, turn, ";
 gameMessage += "use, take, open, key, help.";
 
-//Create an array of actions the game understands
+//Create an array of actions the game understands which the player would be using
 //and a variable to store the current action
 var actionsIKnow
     = ["north","east", "south", "west",
     "help", "take", "use", "key"];
 var action = "";
-
 //An array of items the game understands
 //and a variable to store the current item
 var itemsIKnow = ["key", "knife"];
@@ -78,8 +83,8 @@ var image = document.querySelector("img");
 var output = document.querySelector("#output");
 var input = document.querySelector("#input");
 
-//The button
-var button = document.querySelector("button");
+//The buttons used on the mouse
+var button = document.getElementById("enter");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 button.addEventListener("mousedown", mousedownHandler, false);
@@ -88,7 +93,7 @@ button.addEventListener("mouseout", mouseoutHandler, false);
 //Listen for enter key presses
 window.addEventListener("keydown", keydownHandler, false);
 
-//Display the player's location
+//This calls and displays the current location of the player
 render();
 
 function mousedownHandler()
@@ -163,15 +168,13 @@ function playGame()
         }
     }
 
-    //Choose the correct action
+    //Choose the correct action to get of the Haunted House alive
     switch(action)
     {
         case "north":
             if(mapLocation >= 3)
             {
                 mapLocation -= 3;
-                //saving the locations
-                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -183,8 +186,6 @@ function playGame()
             if(mapLocation % 3 !== 2)
             {
                 mapLocation += 1;
-                //saving the locations
-                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -196,8 +197,6 @@ function playGame()
             if(mapLocation < 3)
             {
                 mapLocation += 3;
-                //saving the locations
-                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -209,8 +208,6 @@ function playGame()
             if(mapLocation % 3 !== 0)
             {
                 mapLocation -= 1;
-                //saving the locations
-                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -440,3 +437,22 @@ function render()
     //Clear the input field
     input.value = "";
 }
+
+var save = document.getElementById("save");
+var reload = document.getElementById("reload");
+
+function saveGame() {
+    //saving the locations
+    localStorage.setItem('saveMapLocation', mapLocation);
+}
+
+function reloadGame() {
+    const savedLocation = localStorage.getItem('saveMapLocation');
+    if (savedLocation !== null) {
+        mapLocation = savedLocation;
+        render();
+    }
+}
+
+save.addEventListener("click", saveGame, false);
+reload.addEventListener("click", reloadGame, false);
