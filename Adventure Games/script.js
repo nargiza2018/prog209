@@ -170,6 +170,8 @@ function playGame()
             if(mapLocation >= 3)
             {
                 mapLocation -= 3;
+                //saving the locations
+                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -181,6 +183,8 @@ function playGame()
             if(mapLocation % 3 !== 2)
             {
                 mapLocation += 1;
+                //saving the locations
+                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -192,6 +196,8 @@ function playGame()
             if(mapLocation < 3)
             {
                 mapLocation += 3;
+                //saving the locations
+                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -203,6 +209,8 @@ function playGame()
             if(mapLocation % 3 !== 0)
             {
                 mapLocation -= 1;
+                //saving the locations
+                localStorage.setItem('saveMapLocation', mapLocation);
             }
             else
             {
@@ -420,7 +428,7 @@ function render()
         }
     }
 
-    //Display the player's backpack contents
+    //Display the player's pocket contents
     if(knife.length !== 0)
     {
         output.innerHTML += "<br>You are carrying: " + knife.join(", ");

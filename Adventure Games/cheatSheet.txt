@@ -1,0 +1,34 @@
+A person finds herself in the cold basement. She needs to navigate to the following locations
+
+north
+south
+east
+west
+
+Every of her choice will navigate to 6 different rooms
+Basement
+Kitchen
+Living Room
+Bedroom
+Bathroom
+Porch
+
+She is carrying knife, in this haunted house, she can protect herself with a special knife from the ghosts
+knife
+
+If she loses the knife, she can go to kitchen and get the kitchen knife (a different item)
+
+It is her goal to get to the key in the bedroom
+command
+take key
+
+Once she navigates to the porch, she has to use the command
+use key
+
+if that doesn't happen, she drops the key and doesn't go free.
+Once the "use key" is executed, the message reads that she is free of her nightmare
+
+Help command gives the key words to enter to play the game
+north, east, south, west, take, drop, use, key, knife.
+
+
