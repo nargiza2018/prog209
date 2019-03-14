@@ -38,7 +38,7 @@ window.onload = () => {
     ctx.moveTo(30, 20);
     ctx.lineTo(400, 300);
     ctx.stroke();
-};
+}
 
 
 
