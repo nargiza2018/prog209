@@ -12,6 +12,14 @@ Living Room
 Bedroom
 Bathroom
 Porch
+Front Porch
+Boiler Room
+Hallway
+Dining Room
+
+There are five items in the game
+key, knife, hammer, mirror, flashlight
+The player has to collect all the items from each room, kills all the monsters on the way before the player can use the key to get out of the Haunted house
 
 She is carrying knife, in this haunted house, she can protect herself with a special knife from the ghosts
 knife
@@ -29,6 +37,7 @@ if that doesn't happen, she drops the key and doesn't go free.
 Once the "use key" is executed, the message reads that she is free of her nightmare
 
 Help command gives the key words to enter to play the game
-north, east, south, west, take, drop, use, key, knife.
+north, east, south, west, take, drop, use, key, knife,hammer, mirror, flashlight
+
 
 

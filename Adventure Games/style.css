@@ -46,6 +46,10 @@ input
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
 }
 
+#start {
+    left: 100px;
+}
+
 #enter {
     bottom: 30px;
     left: 310px;
@@ -62,6 +66,11 @@ input
     bottom: 30px;
     left: 430px;
     width: 60px;
+}
+
+#help {
+    bottom: 30px;
+    left: 10px;
 }
 
 button
@@ -94,13 +103,16 @@ body {
     background-size: cover ;
     background-image: url("haunted-house.jpg");
 }
-#introPage
-{
+#startPage,
+#gamePage,
+#endPage {
     width: 500px;
-    height: 800px;
+    height: 815px;
     background-color: gray;
     position: relative;
-
 }
-
-
+#gamePage,
+#endPage {
+    display: none;
+    opacity: 0;
+}

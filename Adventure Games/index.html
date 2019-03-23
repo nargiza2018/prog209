@@ -5,14 +5,30 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="introPage">
+<div id="startPage">
+    <h1>The Haunted House - Escape Your Nightmare</h1>
+    <p>Welcome</p>
+    <br><button id="start" type="button">Start</button>
+</div>
+<div id="gamePage">
     <h1>The Haunted House - Escape Your Nightmare</h1>
     <img src="" width="400" height="350" alt="introImage">
     <p id="output"></p>
     <label for="input"></label><input id="input" type="text">
     <button id="enter">enter</button>
     <br><br><button id="save">Save</button> <button id="reload">Reload</button>
+    <button id="help">Help</button>
 </div>
+<div id="endPage">
+    <h1>The Haunted House - Escape Your Nightmare</h1>
+    <p>You didn't die.</p>
+</div>
+<audio id="winAudio">
+    <source src="applause.mp3" type="audio/mpeg">
+</audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
