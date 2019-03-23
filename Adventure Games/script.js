@@ -25,9 +25,9 @@ images[2] = "bloody-bathroom.jpg";
 images[3] = "bedroom.jpg";
 images[4] = "living-room.jpg";
 images[5] = "front-porch.jpg";
-images[6] = "boilerroom.jpg";
-images[7] = "hallway.jpg";
-images[8] = "dining-room.jpg";
+images[6] = "boilerroom.JPG";
+images[7] = "hallway.JPG";
+images[8] = "dining-room.JPG";
 
 //setting the blocked path messages
 const blockedPathMessages = [];
